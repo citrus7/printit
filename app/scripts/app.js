@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('printitApp', [
     'ngAnimate',
     'ngAria',
@@ -22,8 +22,8 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/systemOverview.html',
+        controller: 'systemOverview'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
