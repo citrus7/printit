@@ -29,7 +29,7 @@
       			};
       			$scope.spareButton = function(){
       				$scope.displayList = dataService.getSpareObjects();
-        			$location.path("/spareParts");
+        			$location.path("/allItems");
       			};
 
       			$scope.setActive = function(model){
@@ -45,15 +45,22 @@
       			}
 
       			$scope.updateModel = function(){
-      				
+
       				for(aVar in $scope.activeVars){
       					var value = document.getElementById($scope.activeVars[aVar].name).value;
-      					if()
       					console.log(value);
       				}
       				
       			}
 	 			
+	 			$scope.print = function(){
+	 				//deduct material
+	 				dataService.spendPlastic($scope.activeItem.plastic)
+	 				dataService.spendSteel($scope.activeItem.steel)
+	 				dataService.spendGold($scope.activeItem.gold)
+	 				//add time to printer
+	 				dataService.addPrinterTime($scope.selectedPrinter,$scope.activeItem.time)
+	 			}
 
 
 	 		}]);

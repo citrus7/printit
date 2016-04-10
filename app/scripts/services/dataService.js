@@ -167,7 +167,11 @@
 
 
 		svc.update = function(){
-			printers[1].cooldown++;
+			for(i in printers){
+				if (printers[i].cooldown > 0){
+					printers[i].cooldown--;
+				}
+			}
 			notifyObservers();
 		};
 
@@ -185,14 +189,17 @@
 		}
 
 		svc.getToolObjects = function(){
+			activeObjects = toolObjects;
 			return toolObjects;
 		}
 
 		svc.getPartObjects = function(){
+			activeObjects = partObjects;
 			return partObjects;
 		}
 
 		svc.getMiscObjects = function(){
+			activeObjects = miscObjects;
 			return miscObjects;
 		}
 
@@ -200,17 +207,37 @@
 			return activeObjects;
 		}
 
-                               svc.getServerURL = function(){
-                               return serverURL;
-                               }
+        svc.getServerURL = function(){
+        	return serverURL;
+        }
 
-                               svc.getFace = function(index){
-                               return cacheFaces[index];
-                               }
+        svc.getFace = function(index){
+            return cacheFaces[index];
+        }
 
-                               svc.getVars = function(index){
-                               return cacheVars[index];
-                               }
+        svc.getVars = function(index){
+            return cacheVars[index];
+        }
+
+        svc.spendPlastic = function(amount){
+        	materials[0].amount = materials[0].amount - amount;
+        }
+
+        svc.spendSteel = function(amount){
+        	materials[1].amount = materials[1].amount - amount;
+        }
+
+        svc.spendGold = function(amount){
+        	materials[2].amount = materials[2].amount - amount;
+        }
+
+        svc.addPrinterTime = function(printer, time){
+        	for(i in printers){
+        		if(printers[i].name == printer){
+        			printers[i].cooldown += time;
+        		}
+        	}
+        }
 
 
 		//svc.initialize();

@@ -14,8 +14,11 @@
                 <span class="glyphicon glyphicon-print" style="color:orange;font-size:75px;"></span>
               </div>
               <div class="col-xs-6">
-                status: 55
-              </div>
+                <span>
+                  <b>Status:</b>
+                </span>
+                <span style="color:green" ng-show="{{printer.cooldown}}==0">Available</span>
+                <span style="color:red" ng-show="{{printer.cooldown}}>0">Busy</span>
               <div class="col-xs-6">
                 {{printer.cooldown}}
               </div>
@@ -23,6 +26,7 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
   <div class="col-xs-1"></div>
   <div class="col-xs-5">
