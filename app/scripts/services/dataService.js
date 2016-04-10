@@ -11,6 +11,8 @@
 		var toolObjects = [];
 		var partObjects = [];
 		var miscObjects = [];
+                               //var serverURL = "192.168.1.133:5000";
+                               var serverURL = "localhost:5000";
 
 		setInterval(function(){
 		  svc.update();
@@ -71,6 +73,7 @@
 				object1.steel = 0;
 				object1.gold = 0;
 				object1.time = 35;
+                object1.id = 1;
 
 				var object2 = {};
 				object2.name = "Syringe";
@@ -78,6 +81,7 @@
 				object2.steel = 0;
 				object2.gold = 0;
 				object2.time = 45;
+                object2.id = 4;
 
 				medicalObjects.push(object1);
 				medicalObjects.push(object2);
@@ -86,10 +90,12 @@
 				var object3 = {};
 				object3.name = "Screwdriver";
 				object3.cooldown = 0;
+                               object3.id = 3;
 
 				var object4 = {};
 				object4.name = "Pulley";
 				object4.cooldown = 0;
+                               object4.id = 5;
 
 				toolObjects.push(object3);
 				toolObjects.push(object4);
@@ -98,10 +104,12 @@
 				var object5 = {};
 				object5.name = "Screw";
 				object5.cooldown = 0;
+                               object5.id = 2;
 
 				var object6 = {};
 				object6.name = "Box";
 				object6.cooldown = 0;
+                               object6.id = 0;
 
 				partObjects.push(object5);
 				partObjects.push(object6);
@@ -155,6 +163,10 @@
 		svc.getActiveObjects = function(){
 			return activeObjects;
 		}
+
+                               svc.getServerURL = function(){
+                               return serverURL;
+                               }
 
 
 		//svc.initialize();
