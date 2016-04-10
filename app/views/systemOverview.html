@@ -1,6 +1,6 @@
 <div ng-app>
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-6" style="border-radius: 25px;border: 2px solid orange;padding: 50px;">
       <!-- Printer status -->
       <div>
         <h2>Libraries:</h2> 
@@ -27,26 +27,29 @@
   <div class="col-xs-1"></div>
   <div class="col-xs-5">
     <!-- Alerts -->
-    <div>
+    <div class="row" style="border-radius: 25px;border: 2px solid orange;padding: 20px;">
       <h2>Alerts:</h2> 
     </div>
+    <br>
     <!-- Materials -->
-    <div>
-      <h2>Materials:</h2> 
-    </div>
-    <div class="row" ng-repeat="material in materials">
-      <ul class="list-group">
-        <li class="list-group-item">
-        {{material.name}}
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow={{material.amount}} aria-valuemin="0" aria-valuemax="100" style="width: {{material.amount}}%;">
-            {{material.amount}}
+    <div class="row" style="border-radius: 25px;border: 2px solid orange;padding: 20px;">
+      <div>
+        <h2>Materials:</h2> 
+      </div>
+      <div class="row" ng-repeat="material in materials">
+        <ul class="list-group">
+          <li class="list-group-item">
+          {{material.name}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow={{material.amount}} aria-valuemin="0" aria-valuemax="100" style="width: {{material.amount}}%;">
+              {{material.amount}}
+            </div>
           </div>
-        </div>
 
-        </li>
-      </ul>
+          </li>
+        </ul>
 
+      </div>
     </div>
   </div>
 </div>

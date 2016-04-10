@@ -9,13 +9,56 @@
       </div>
       <div class="col-xs-6">
 
-      {{activeItem.name}}
-      {{activeItem.plastic}}
-      {{activeItem.steel}}
-      {{activeItem.gold}}
-      {{activeItem.time}}
-      <br>
-      <canvas id="preview" style="border: none;" width="300" height="300"></canvas>
+        <div class="row">
+          <div class="col-xs-6">
+            <canvas id="preview" style="border: none;" width="250" height="250"></canvas>
+          </div>
+          <div class="col-xs-6">
+            <br>
+            <br>
+            <h4>{{activeItem.name}}</h4>
+            Plastic: {{activeItem.plastic}}g
+            <br>
+            Steel: {{activeItem.steel}}g
+            <br>
+            Gold: {{activeItem.gold}}g
+            <br>
+            Print Time: {{activeItem.time}} mintues
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group" ng-repeat="param in activeItem.parameters">
+              <label for="exampleInputName2">{{param.name}}</label>
+              <input type="text" class="form-control" id="exampleInputName2" value={{param.value}}>
+            </div>
+            <br>
+            <button type="button" class="btn btn-default">update</button>
+          </div>
+          <div class="col-xs-6">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{selectedPrinter}}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li ng-repeat="printer in printers"><a ng-click="setActivePrinter(printer.name)">{{printer.name}}</a></li>
+              </ul>
+            </div>
+            <br>
+            <form class="form-inline">
+              <div class="form-group">
+                <label for="exampleInputName2">Quantity:</label>
+                <input type="text" class="form-control" id="quantity" value=1>
+              </div>
+            </form>
+            <br>
+            <button type="button" class="btn btn-default btn-lg btn-success">Print</button>
+          </div>
+
+        </div>
+      
 
       </div>
   </div>
@@ -152,7 +195,7 @@ function drawScene() {
     gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
     gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
     setMatrixUniforms();
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
+    gl.drawArrays(gl.TRIANGLES, 0, squareVertexPositionBuffer.numItems);
 }
 
 

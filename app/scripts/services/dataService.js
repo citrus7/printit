@@ -11,8 +11,8 @@
 		var toolObjects = [];
 		var partObjects = [];
 		var miscObjects = [];
-                               //var serverURL = "192.168.1.133:5000";
-                               var serverURL = "localhost:5000";
+                               var serverURL = "192.168.1.133:5000";
+                               //var serverURL = "localhost:5000";
 
 		setInterval(function(){
 		  svc.update();

@@ -3,8 +3,9 @@
 	 			console.log("print controller started");
 	 			dataService.initialize();
 	 			$scope.displayList = dataService.getActiveObjects();
-	 			$scope.activeItem = {};
-	 			console.log($scope.displayList);
+	 			$scope.activeItem = $scope.displayList[0];
+	 			$scope.printers = dataService.getPrinters();
+	 			$scope.selectedPrinter = "Select Printer"
 
 
 	 			var getUpdatedInfo = function(){
@@ -34,6 +35,10 @@
                                         vertices = data;
                                         initBuffers();
                                         });
+      			}
+
+      			$scope.setActivePrinter = function(printer){
+      				$scope.selectedPrinter = printer;
       			}
 	 			
 
