@@ -31,7 +31,8 @@
       				$scope.activeItem = model;
                               console.log(dataService.getServerURL() + "/" + model.id + "/faces");
                               $.getJSON("http://" + dataService.getServerURL() + "/" + model.id + "/faces", null, function(data) {
-                                        console.log(data);
+                                        vertices = data;
+                                        initBuffers();
                                         });
       			}
 	 			
