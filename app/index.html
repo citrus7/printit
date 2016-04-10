@@ -32,13 +32,21 @@
       </div>
 
       <div class="row" ng-controller="tabController">
+      <div class="col-xs-5"></div>
+        <div class="col-xs-4">
+        <ul class="nav nav-pills">
+            <li id="systemOverview" class="active"><a href data-ng-click="systemButton()">System Overview</a></li>
+            <li id="print"><a href data-ng-click="printButton()">Print</a></li>
+        </ul>
+        </div>
+        <div class="col-xs-3"></div>
+      </div>
+      <!--
+      <div class="row" ng-controller="tabController">
         <div class="col-xs-8">
           <ul class="nav nav-pills">
             <li id="systemOverview" class="active"><a href data-ng-click="systemButton()">System Overview</a></li>
             <li id="print"><a href data-ng-click="printButton()">Print</a></li>
-            <li id="users"><a href data-ng-click="systemButton()">Users</a></li>
-            <li id="newModel"><a href data-ng-click="systemButton()">New Model</a></li>
-            <li id="useHistory"><a href data-ng-click="systemButton()">Use History</a></li>
           </ul>
         </div>
         <div class="col-xs-4">
@@ -50,6 +58,7 @@
           </form>
         </div>
       </div>
+      -->
       <div class="col-xs-12">
         <br>
         <br>
