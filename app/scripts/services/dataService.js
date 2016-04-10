@@ -5,7 +5,12 @@
 		observerCallbacks = [];
 
 		var printers = [];
-		var materials = []
+		var materials = [];
+		var activeObjects = [];
+		var medicalObjects = [];
+		var toolObjects = [];
+		var partObjects = [];
+		var miscObjects = [];
 
 		setInterval(function(){
 		  svc.update();
@@ -44,11 +49,11 @@
 
 				//initialize materials
 				var material1 = {};
-				material1.name = "PLA"
+				material1.name = "Plastic"
 				material1.amount = 100
 
 				var material2 = {};
-				material2.name = "Silver"
+				material2.name = "Steel"
 				material2.amount = 50
 
 				var material3 = {};
@@ -59,8 +64,56 @@
 				materials.push(material2);
 				materials.push(material3);
 
+				//initialize medicalObjects
+				var object1 = {};
+				object1.name = "Cast";
+				object1.plastic = 20;
+				object1.steel = 0;
+				object1.gold = 0;
+				object1.time = 35;
 
+				var object2 = {};
+				object2.name = "Syringe";
+				object2.plastic = 20;
+				object2.steel = 0;
+				object2.gold = 0;
+				object2.time = 45;
 
+				medicalObjects.push(object1);
+				medicalObjects.push(object2);
+
+				//initialize toolObjects
+				var object3 = {};
+				object3.name = "Screwdriver";
+				object3.cooldown = 0;
+
+				var object4 = {};
+				object4.name = "Pulley";
+				object4.cooldown = 0;
+
+				toolObjects.push(object3);
+				toolObjects.push(object4);
+
+				//initialize partObjects
+				var object5 = {};
+				object5.name = "Screw";
+				object5.cooldown = 0;
+
+				var object6 = {};
+				object6.name = "Box";
+				object6.cooldown = 0;
+
+				partObjects.push(object5);
+				partObjects.push(object6);
+
+				/*
+				box - 7
+				cast - 20
+				screw - 2
+				screwdriver - 5
+				syringe - 3
+				pulley - 20
+				*/
 
 
 				initialized = 1;
@@ -80,6 +133,27 @@
 
 		svc.getMaterials = function(){
 			return materials;
+		}
+
+		svc.getMedicalObjects = function(){
+			activeObjects = medicalObjects;
+			return medicalObjects;
+		}
+
+		svc.getToolObjects = function(){
+			return toolObjects;
+		}
+
+		svc.getPartObjects = function(){
+			return partObjects;
+		}
+
+		svc.getMiscObjects = function(){
+			return miscObjects;
+		}
+
+		svc.getActiveObjects = function(){
+			return activeObjects;
 		}
 
 

@@ -1,24 +1,20 @@
 	 app.controller("print", ["$scope", "$location", "$routeParams", "dataService", "$rootScope",
 	 	function($scope, $location, $routeParams, dataService, $rootScope) {
-	 			console.log("systemOverview started");
-	 			var test = "this is the systemOverview";
-	 			var displayList = [];
-	 			
-
+	 			console.log("print controller started");
 	 			dataService.initialize();
+	 			$scope.displayList = dataService.getActiveObjects();
+	 			$scope.activeItem = {};
+	 			console.log($scope.displayList);
 
-	 			$scope.printers = dataService.getPrinters();
 
 	 			var getUpdatedInfo = function(){
-	 				$scope.printers = dataService.getPrinters();
-	 				$scope.materials = dataService.getMaterials();
 	 				$scope.$apply();
 	 			}
 
 	 			dataService.registerObserverCallback(getUpdatedInfo);
 
 	 			$scope.medicalButton = function(){
-	 				displayList = dataService.getMedicalObjects();
+	 				$scope.displayList = dataService.getMedicalObjects();
         			$location.path("/allItems");
       			};
       			$scope.miscButton = function(){
@@ -30,6 +26,11 @@
       			$scope.spareButton = function(){
         			$location.path("/spareParts");
       			};
+
+      			$scope.setActive = function(model){
+      				$scope.activeItem = model;
+      				console.log($scope.activeItem);
+      			}
 	 			
 
 
