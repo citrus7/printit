@@ -13,10 +13,34 @@
 		var miscObjects = [];
                                //var serverURL = "192.168.1.133:5000";
                                var serverURL = "localhost:5000";
+                               var cacheFaces = [null,null,null,null,null,null];
+                               var cacheVars = [null,null,null,null,null,null];
 
 		setInterval(function(){
 		  svc.update();
 		}, 1000);
+
+
+                               cacheIndex = 0;
+                               updateCache = function() {
+                               if (cacheIndex > 11)
+                               {
+                               return;
+                               }
+                               var index = cacheIndex % 6;
+                               if (index > 1) { cacheIndex += 1; return;}
+                               if (cacheIndex < 6) {
+                               $.getJSON("http://" + serverURL + "/" + index + "/vars", null, function(data) {
+                                         cacheVars[index] = data;
+                                         });
+                               } else {
+                               $.getJSON("http://" + serverURL + "/" + index + "/faces", null, function(data) {
+                                         cacheFaces[index] = data;
+                                         });
+                               }
+                               cacheIndex += 1;
+                               };
+                               setInterval(updateCache, 10000);
 
 		//register an observer
 		svc.registerObserverCallback = function(callback){
@@ -178,6 +202,14 @@
 
                                svc.getServerURL = function(){
                                return serverURL;
+                               }
+
+                               svc.getFace = function(index){
+                               return cacheFaces[index];
+                               }
+
+                               svc.getVars = function(index){
+                               return cacheVars[index];
                                }
 
 

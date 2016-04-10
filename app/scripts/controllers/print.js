@@ -29,11 +29,8 @@
 
       			$scope.setActive = function(model){
       				$scope.activeItem = model;
-                              console.log(dataService.getServerURL() + "/" + model.id + "/faces");
-                              $.getJSON("http://" + dataService.getServerURL() + "/" + model.id + "/faces", null, function(data) {
-                                        vertices = data;
+                              vertices = dataService.getFace(model.id);
                                         initBuffers();
-                                        });
       			}
 	 			
 
