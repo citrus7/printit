@@ -45,13 +45,28 @@
       			}
 
       			$scope.updateModel = function(){
-      				
+                              var updates = [];
+                              var model = $scope.activeItem;
       				for(aVar in $scope.activeVars){
       					var value = document.getElementById($scope.activeVars[aVar].name).value;
-      					if()
-      					console.log(value);
+                              var oldValue = $scope.activeVars[aVar].value;
+                              $scope.activeVars[aVar].value = value;
+      					if (value != oldValue)
+                              {
+                              updates.push("http://" + dataService.getServerURL() + "/" + model.id + "/change/name/" + $scope.activeVars[aVar].name + "/value/" + value);
+                              }
       				}
-      				
+                                           if (updates.length > 0)
+                                           {
+                                            while (updates.length > 1)
+                                           {
+                              $.getJSON(updates.pop(), null, function(x){});
+                                           }
+                                           $.getJSON(updates.pop(), null, function(x) {
+                                                     dataService.updateCacheEntry(model.id)
+                                                     });
+                                           }
+
       			}
 	 			
 

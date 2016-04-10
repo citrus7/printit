@@ -212,6 +212,18 @@
                                return cacheVars[index];
                                }
 
+                               svc.updateCacheEntry = function(index){
+                               $.getJSON("http://" + serverURL + "/" + index + "/vars", null, function(data) {
+                                         cacheVars[index] = data;
+                                         });
+                               $.getJSON("http://" + serverURL + "/" + index + "/faces", null, function(data) {
+                                         cacheFaces[index] = data;
+                                         //if ($scope.activeItem.id == index) {
+                                         vertices = data;
+                                         initBuffers();
+                                         //}
+                                         });
+                               }
 
 		//svc.initialize();
 		//svc.update();
