@@ -4,6 +4,7 @@
 	 			dataService.initialize();
 	 			$scope.displayList = dataService.getActiveObjects();
 	 			$scope.activeItem = $scope.displayList[0];
+	 			$scope.activeVars = [];
 	 			$scope.printers = dataService.getPrinters();
 	 			$scope.selectedPrinter = "Select Printer"
 
@@ -19,23 +20,38 @@
         			$location.path("/allItems");
       			};
       			$scope.miscButton = function(){
+      				$scope.displayList = dataService.getMiscObjects();
         			$location.path("/allItems");
       			};
       			$scope.toolsButton = function(){
+      				$scope.displayList = dataService.getToolObjects();
         			$location.path("/allItems");
       			};
       			$scope.spareButton = function(){
+      				$scope.displayList = dataService.getSpareObjects();
         			$location.path("/spareParts");
       			};
 
       			$scope.setActive = function(model){
       				$scope.activeItem = model;
-                              vertices = dataService.getFace(model.id);
-                                        initBuffers();
+      				$scope.activeVars = dataService.getVars(model.id);
+      				console.log($scope.activeVars);
+                    vertices = dataService.getFace(model.id);
+                    initBuffers();
       			}
 
       			$scope.setActivePrinter = function(printer){
       				$scope.selectedPrinter = printer;
+      			}
+
+      			$scope.updateModel = function(){
+      				
+      				for(aVar in $scope.activeVars){
+      					var value = document.getElementById($scope.activeVars[aVar].name).value;
+      					if()
+      					console.log(value);
+      				}
+      				
       			}
 	 			
 

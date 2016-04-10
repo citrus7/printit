@@ -14,7 +14,7 @@
       	var serverURL = "192.168.1.133:5000";
       	//var serverURL = "localhost:5000";
       	var cacheFaces = [null,null,null,null,null,null];
-      	var cacheVars = [null,null,null,null,null,null];
+      	var cacheVars = [{name:"test1",value:"5"},{name:"test2",value:"2"},{name:"test2",value:"2"},{name:"test2",value:"2"},{name:"test2",value:"2"},{name:"test2",value:"2"}];
 
 		setInterval(function(){
 		  svc.update();
