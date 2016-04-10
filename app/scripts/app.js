@@ -25,9 +25,17 @@ var app = angular
         templateUrl: 'views/systemOverview.html',
         controller: 'systemOverview'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/systemOverview', {
+        templateUrl: 'views/systemOverview.html',
+        controller: 'systemOverview'
+      })
+      .when('/print', {
+        templateUrl: 'views/print.html',
+        controller: 'print'
+      })
+      .when('/allItems', {
+        templateUrl: 'views/allItems.html',
+        controller: 'print'
       })
       .otherwise({
         redirectTo: '/'
